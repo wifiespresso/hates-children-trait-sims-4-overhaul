@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  buff_HatesChildren_Child_TheyDontLikeMe
+  Instance: 0x0000000000F01012 (= 15728658 decimal)
+
+  Applied to a CHILD (not infant/toddler) when their caregiver has trait_HatesChildren.
+  Children are old enough to consciously register rejection from a caregiver.
+  This is a stronger and more emotionally legible sad buff.
+
+  Mood: Sad, weight 2, 2 sim-hour (120 min) duration.
+  Visible so the player sees the child's emotional response.
+-->
+<I c="Buff" i="buff" m="buffs.buff" n="buff_HatesChildren_Child_TheyDontLikeMe" s="15732754">
+  <T n="audio_sting_on_add" p="InGame\Audio\Stings\sting_buff_loss.propx">39b2aa4a:00000000:3bf33216a25546ea</T>
+  <T n="audio_sting_on_remove" p="InGame\Audio\Stings\sting_buff_gain.propx">39b2aa4a:00000000:8af8b916cf64c646</T>
+  <V n="_temporary_commodity_info" t="enabled">
+    <U n="enabled">
+      <L n="categories">
+        <E>Sad_Buffs</E>
+      </L>
+      <T n="max_duration">120</T>
+    </U>
+  </V>
+  <T n="buff_name">0xF0001005</T>
+  <T n="buff_description">0xF0001007</T>
+  <T n="icon" p="InGame\UI\Icons\Buffs\Buffs_Sad.png">2f7d0004:00000000:9b0e1f2ca3d87654</T>
+  <T n="mood_type">14643<!--Mood_Sad--></T>
+  <T n="mood_weight">2</T>
+  <T n="visible">True</T>
+</I>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  STANDALONE OVERRIDE: loot_Infant_SetInfantConcern (s=283473)
+
+  Standalone — does NOT require Zuperbuu's mod.
+  Contains all of Zuperbuu's changes + Tier 2 penalty loot call.
+
+  Actor = Infant/child, TargetSim = Caregiver
+-->
+<I c="LootActions" i="action" m="interactions.utils.loot" n="loot_Infant_SetInfantConcern" s="283473">
+  <L n="loot_actions">
+
+    <!-- TimeAlone reset — blocked for HC caregivers -->
+    <V t="statistics">
+      <V n="statistics" t="statistic_set_min">
+        <U n="statistic_set_min">
+          <L n="tests">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="blacklist_traits">
+                    <T>16844<!--trait_HatesChildren--></T>
+                  </L>
+                  <E n="subject">TargetSim</E>
+                </U>
+              </V>
+            </L>
+          </L>
+          <T n="stat">282865<!--commodity_Infant_TimeAlone--></T>
+          <L n="subject">
+            <E>Actor</E>
+          </L>
+        </U>
+      </V>
+    </V>
+
+    <!-- Standard rel boost — blocked for HC/Family traits -->
+    <V t="statistics">
+      <V n="statistics" t="relationship_set">
+        <U n="relationship_set">
+          <L n="target_participant_type">
+            <E>TargetSim</E>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="blacklist_traits">
+                    <T>16838<!--trait_FamilyOriented--></T>
+                    <T>27083<!--trait_FamilySim--></T>
+                    <T>161625<!--trait_LifeSkills_Responsible--></T>
+                    <T>16844<!--trait_HatesChildren--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+          <T n="track">283435<!--relationshipTrack_Infant_CheckOn--></T>
+          <U n="track_range">
+            <T n="lower_bound">0</T>
+            <T n="upper_bound">1440</T>
+          </U>
+          <T n="value">360</T>
+        </U>
+      </V>
+    </V>
+
+    <!-- Higher boost for FamilyOriented/Responsible -->
+    <V t="statistics">
+      <V n="statistics" t="relationship_set">
+        <U n="relationship_set">
+          <L n="target_participant_type">
+            <E>TargetSim</E>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>16838<!--trait_FamilyOriented--></T>
+                    <T>27083<!--trait_FamilySim--></T>
+                    <T>161625<!--trait_LifeSkills_Responsible--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+          <T n="track">283435<!--relationshipTrack_Infant_CheckOn--></T>
+          <U n="track_range">
+            <T n="lower_bound">0</T>
+            <T n="upper_bound">1440</T>
+          </U>
+          <T n="value">240</T>
+        </U>
+      </V>
+    </V>
+
+    <!-- Positive tick for Irresponsible/SelfAbsorbed (vanilla Zuperbuu logic) -->
+    <V t="statistics">
+      <V n="statistics" t="relationship_change">
+        <U n="relationship_change">
+          <T n="amount">120</T>
+          <L n="subject">
+            <E>Actor</E>
+          </L>
+          <L n="target_participant_type">
+            <E>TargetSim</E>
+          </L>
+          <L n="tests">
+            <L>
+              <V t="trait">
+                <U n="trait">
+                  <L n="whitelist_traits">
+                    <T>161626<!--trait_LifeSkills_Irresponsible--></T>
+                    <T>199561<!--trait_SelfAbsorbed--></T>
+                  </L>
+                </U>
+              </V>
+            </L>
+          </L>
+          <T n="track">283435<!--relationshipTrack_Infant_CheckOn--></T>
+          <U n="track_range">
+            <T n="lower_bound">0</T>
+            <T n="upper_bound">1440</T>
+          </U>
+        </U>
+      </V>
+    </V>
+
+    <!-- TIER 2: Call penalty loot for HC caregivers — applies age-appropriate sad buff to Actor + tense buff to TargetSim -->
+    <V t="loot">
+      <U n="loot">
+        <T n="loot_actions">15732739<!--loot_HatesChildren_ApplyAllPenalties--></T>
+      </U>
+    </V>
+
+  </L>
+</I>

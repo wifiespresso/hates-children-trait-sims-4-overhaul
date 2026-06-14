@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  INTERACTION LOOT: loot_HC_Interaction_MakeItKnown (s=15728672)
+  Called from: mixer_HC_makeitknown_child
+  Actor = HC adult, TargetSim = Child
+
+  Actor gets: Lumpinou Scornful (visible MP mood, 2hr)
+  Target gets: Lumpinou Hurt (MP mood, weight 6) + our Ashamed moodlet
+  Relationship: −40 on both directions
+-->
+<I c="LootActions" i="action" m="interactions.utils.loot" n="loot_HC_Interaction_MakeItKnown" s="15732768">
+  <L n="loot_actions">
+
+    <!-- Actor (HC sim) gets Scornful -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15722265860118568525<!--Lumpinou_MP_Scornful_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+
+    <!-- Target (child) gets Lumpinou Hurt -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">14111274126260124368<!--Lumpinou_MP_Hurt_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+      </U>
+    </V>
+
+    <!-- Target (child) also gets Ashamed (our moodlet) -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">12908008064822821498<!--Lumpinou_MP_Ashamed_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+      </U>
+    </V>
+
+    <!-- Relationship decay: Actor → Target -->
+    <V t="relationship_track">
+      <U n="relationship_track">
+        <V n="actor" t="actor">
+          <U n="actor">
+            <E n="participant">Actor</E>
+          </U>
+        </V>
+        <V n="target" t="actor">
+          <U n="actor">
+            <E n="participant">TargetSim</E>
+          </U>
+        </V>
+        <T n="relationship_track">16714</T>
+        <T n="value">-40</T>
+      </U>
+    </V>
+    <!-- Relationship decay: Target → Actor -->
+    <V t="relationship_track">
+      <U n="relationship_track">
+        <V n="actor" t="actor">
+          <U n="actor">
+            <E n="participant">TargetSim</E>
+          </U>
+        </V>
+        <V n="target" t="actor">
+          <U n="actor">
+            <E n="participant">Actor</E>
+          </U>
+        </V>
+        <T n="relationship_track">16714</T>
+        <T n="value">-40</T>
+      </U>
+    </V>
+
+  </L>
+</I>

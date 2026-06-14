@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SOCIAL MIXER INTERACTION: mixer_HC_makeitknown_child
+  "Make It Known You Dislike Children"
+
+  Available in the social pie menu when a HatesChildren adult/YA
+  clicks on a child-age sim.
+
+  Animation: reuses angry social ASM (same as Complain/Argue socials).
+  Actor and target play opposing angry / upset clips.
+  Outcome loot: loot_HC_Interaction_MakeItKnown applies Lumpinou moods.
+-->
+<I c="ImmediateSuperInteraction" i="interaction" m="interactions.base.immediate_interaction" n="mixer_HC_makeitknown_child" s="15732773">
+  <!-- Only available from the social super interaction -->
+  <L n="_super_interactions">
+    <T>13195<!--socialSuperInteraction--></T>
+    <T>14672<!--socialSuperInteraction_AlwaysOn--></T>
+  </L>
+
+  <!-- Animation: reuse the "Argue" asm for adults / "Upset" for children -->
+  <V n="_asm_context_override" t="enabled">
+    <T n="enabled">social_Argue</T>
+  </V>
+
+  <!-- Interaction label shown in pie menu -->
+  <T n="display_name">0xF0002001<!--"Make It Known You Dislike Children"--></T>
+  <T n="pie_menu_tooltip">0xF0002011<!--"Let the child know exactly how you feel about having them around."--></T>
+
+  <!-- Pie menu display -->
+  <V n="pie_menu_category" t="enabled">
+    <T n="enabled">90601<!--pie_category_mean--></T>
+  </V>
+
+  <!-- Tests: Actor must have HC trait, target must be child age -->
+  <V n="test_globals" t="enabled">
+    <L n="enabled">
+      <!-- Actor must have HatesChildren -->
+      <V t="trait">
+        <U n="trait">
+          <E n="subject">Actor</E>
+          <L n="whitelist_traits">
+            <T>16844<!--trait_HatesChildren--></T>
+          </L>
+        </U>
+      </V>
+      <!-- Actor must be Adult/YA/Teen/Elder age -->
+      <V t="sim_info">
+        <U n="sim_info">
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>YOUNGADULT</E>
+              <E>ADULT</E>
+              <E>ELDER</E>
+            </L>
+          </V>
+        </U>
+      </V>
+      <!-- Target must be a child -->
+      <V t="sim_info">
+        <U n="sim_info">
+          <E n="participant">TargetSim</E>
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>CHILD</E>
+            </L>
+          </V>
+        </U>
+      </V>
+    </L>
+  </V>
+
+  <!-- Outcome loot -->
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>15732768<!--loot_HC_Interaction_MakeItKnown--></T>
+        </L>
+      </U>
+    </V>
+    <!-- Push crying reaction onto child target -->
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>125140<!--loot_Reaction_Generic_Sad_DramaticChildSad--></T>
+        </L>
+        <E n="subject">TargetSim</E>
+      </U>
+    </V>
+  </L>
+
+  <!-- Social outcome weights -->
+  <V n="outcome" t="all_outcomes">
+    <U n="all_outcomes">
+      <V n="single_outcome" t="basic">
+        <U n="basic">
+          <T n="weight">1</T>
+        </U>
+      </V>
+    </U>
+  </V>
+
+</I>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  DISCIPLINE OUTCOME LOOT B: Annoyed/Resentful (s=15728689)
+  The HC sim resents having had to do this. Even "winning" feels like a loss.
+
+  Adult (Actor):
+    - Lumpinou Resentful buff (bitter about being put in this position)
+    - Our "Ugh... Children" tense moodlet (buff_HatesChildren_PostInteraction_Tense)
+    - Lumpinou Frustrated (they had to deal with it)
+
+  Toddler (TargetSim) — same trait-conditional logic as Loot A.
+
+  Relationship: −50 both directions
+-->
+<I c="LootActions" i="action" m="interactions.utils.loot" n="loot_HC_Discipline_Outcome_Annoyed" s="15732785">
+  <L n="loot_actions">
+
+    <!-- ── ACTOR (HC Adult): Resentful + Frustrated + Tense ── -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">18107140886631642177<!--Lumpinou_MP_Resentful_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">9596804972333020597<!--Lumpinou_MP_Frustrated_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732737<!--buff_HatesChildren_PostInteraction_Tense--></T>
+        </U>
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+
+    <!-- ── TARGET (Toddler): same trait-conditional logic as Loot A ── -->
+
+    <!-- Sensitive → Lumpinou Hurt -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">14111274126260124368<!--Lumpinou_MP_Hurt_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140740</T><T>140742</T><T>140745</T><T>140744</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732755<!--buff_HC_Toddler_Hurt--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140740</T><T>140742</T><T>140745</T><T>140744</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+
+    <!-- Feisty → Lumpinou Resentful (mirrors the adult's feeling — shared anger) -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">18107140886631642177<!--Lumpinou_MP_Resentful_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140741</T><T>140739</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732756<!--buff_HC_Toddler_Defiant--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140741</T><T>140739</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+
+    <!-- Default → Lumpinou Scared (the HC sim's aggression frightens them) -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15956583854155356605<!--Lumpinou_MP_Scared_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="blacklist_traits">
+                  <T>140740</T><T>140742</T><T>140745</T>
+                  <T>140744</T><T>140741</T><T>140739</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732753<!--buff_HatesChildren_Toddler_SomethingsWrong--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="blacklist_traits">
+                  <T>140740</T><T>140742</T><T>140745</T>
+                  <T>140744</T><T>140741</T><T>140739</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+
+    <!-- ── RELATIONSHIP DECAY −50 ── -->
+    <V t="relationship_track">
+      <U n="relationship_track">
+        <V n="actor" t="actor">
+          <U n="actor">
+            <E n="participant">Actor</E>
+          </U>
+        </V>
+        <V n="target" t="actor">
+          <U n="actor">
+            <E n="participant">TargetSim</E>
+          </U>
+        </V>
+        <T n="relationship_track">16714</T>
+        <T n="value">-50</T>
+      </U>
+    </V>
+    <V t="relationship_track">
+      <U n="relationship_track">
+        <V n="actor" t="actor">
+          <U n="actor">
+            <E n="participant">TargetSim</E>
+          </U>
+        </V>
+        <V n="target" t="actor">
+          <U n="actor">
+            <E n="participant">Actor</E>
+          </U>
+        </V>
+        <T n="relationship_track">16714</T>
+        <T n="value">-50</T>
+      </U>
+    </V>
+
+  </L>
+</I>
