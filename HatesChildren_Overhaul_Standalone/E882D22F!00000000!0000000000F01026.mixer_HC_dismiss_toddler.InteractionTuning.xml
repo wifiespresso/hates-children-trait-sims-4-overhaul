@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SOCIAL MIXER INTERACTION: mixer_HC_dismiss_toddler
+  "Dismiss"
+
+  Available when a HatesChildren adult/YA clicks on a toddler.
+  The HC sim performs a dismissive wave-off gesture while the toddler
+  reacts with distress.
+
+  Outcome loot: loot_HC_Interaction_Dismiss — Lumpinou Annoyed (actor) + Anxious/Lonely (toddler).
+-->
+<I c="ImmediateSuperInteraction" i="interaction" m="interactions.base.immediate_interaction" n="mixer_HC_dismiss_toddler" s="15732774">
+  <L n="_super_interactions">
+    <T>13195<!--socialSuperInteraction--></T>
+    <T>14672<!--socialSuperInteraction_AlwaysOn--></T>
+  </L>
+
+  <!-- Animation: reuse "WaveOff" / Bored dismissive social asm -->
+  <V n="_asm_context_override" t="enabled">
+    <T n="enabled">social_Dismiss</T>
+  </V>
+
+  <T n="display_name">0xF0002002<!--"Dismiss"--></T>
+
+  <V n="pie_menu_category" t="enabled">
+    <T n="enabled">90601<!--pie_category_mean--></T>
+  </V>
+
+  <V n="test_globals" t="enabled">
+    <L n="enabled">
+      <V t="trait">
+        <U n="trait">
+          <E n="subject">Actor</E>
+          <L n="whitelist_traits">
+            <T>16844<!--trait_HatesChildren--></T>
+          </L>
+        </U>
+      </V>
+      <V t="sim_info">
+        <U n="sim_info">
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>YOUNGADULT</E>
+              <E>ADULT</E>
+              <E>ELDER</E>
+            </L>
+          </V>
+        </U>
+      </V>
+      <V t="sim_info">
+        <U n="sim_info">
+          <E n="participant">TargetSim</E>
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>TODDLER</E>
+            </L>
+          </V>
+        </U>
+      </V>
+    </L>
+  </V>
+
+  <L n="basic_extras">
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>15732769<!--loot_HC_Interaction_Dismiss--></T>
+        </L>
+      </U>
+    </V>
+    <!-- Push toddler cry reaction -->
+    <V t="loot">
+      <U n="loot">
+        <L n="loot_list">
+          <T>140752<!--loot_Buff_Toddler_Crying--></T>
+        </L>
+        <E n="subject">TargetSim</E>
+      </U>
+    </V>
+  </L>
+
+  <V n="outcome" t="all_outcomes">
+    <U n="all_outcomes">
+      <V n="single_outcome" t="basic">
+        <U n="basic">
+          <T n="weight">1</T>
+        </U>
+      </V>
+    </U>
+  </V>
+
+</I>

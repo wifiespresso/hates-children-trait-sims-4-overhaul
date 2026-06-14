@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  DISCIPLINE OUTCOME LOOT A: Satisfied/Scornful (s=15728688)
+  Called when the HC sim's harsh discipline resolves in the "grim satisfaction" branch.
+
+  Adult (Actor):
+    - Lumpinou Scornful buff (feels coldly vindicated)
+    - Our buff_HC_Adult_HarshDiscipline_Satisfied (confident, 1hr)
+
+  Toddler (TargetSim) — trait-conditional:
+    - Sensitive traits (Angelic, Charmer, Inquisitive, Clingy):
+        Lumpinou Hurt + buff_HC_Toddler_Hurt (sad, 4hr)
+    - Feisty traits (Wild, Fussy):
+        Lumpinou Resentful + buff_HC_Toddler_Defiant (angry, 3hr)
+    - Default (no specific trait / Silly, Independent):
+        Lumpinou Anxious + buff_HatesChildren_Toddler_SomethingsWrong
+
+  Relationship: −50 both directions
+-->
+<I c="LootActions" i="action" m="interactions.utils.loot" n="loot_HC_Discipline_Outcome_Satisfied" s="15732784">
+  <L n="loot_actions">
+
+    <!-- ── ACTOR (HC Adult): Scornful + Satisfied ── -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15722265860118568525<!--Lumpinou_MP_Scornful_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732757<!--buff_HC_Adult_HarshDiscipline_Satisfied--></T>
+        </U>
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+
+    <!-- ── TARGET (Toddler) SENSITIVE PATH: Angelic, Charmer, Inquisitive, Clingy ── -->
+    <!-- Lumpinou Hurt -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">14111274126260124368<!--Lumpinou_MP_Hurt_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140740<!--trait_Toddler_Angelic--></T>
+                  <T>140742<!--trait_Toddler_Charmer--></T>
+                  <T>140745<!--trait_Toddler_Inquisitive--></T>
+                  <T>140744<!--trait_Toddler_Clingy--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <!-- Our sad moodlet — sensitive path -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732755<!--buff_HC_Toddler_Hurt--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140740<!--trait_Toddler_Angelic--></T>
+                  <T>140742<!--trait_Toddler_Charmer--></T>
+                  <T>140745<!--trait_Toddler_Inquisitive--></T>
+                  <T>140744<!--trait_Toddler_Clingy--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+
+    <!-- ── TARGET (Toddler) FEISTY PATH: Wild, Fussy ── -->
+    <!-- Lumpinou Resentful -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">18107140886631642177<!--Lumpinou_MP_Resentful_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140741<!--trait_Toddler_Wild--></T>
+                  <T>140739<!--trait_Toddler_Fussy--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <!-- Our angry moodlet — feisty path -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732756<!--buff_HC_Toddler_Defiant--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="whitelist_traits">
+                  <T>140741<!--trait_Toddler_Wild--></T>
+                  <T>140739<!--trait_Toddler_Fussy--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+
+    <!-- ── TARGET (Toddler) DEFAULT PATH: Silly, Independent, or no trait ── -->
+    <!-- Lumpinou Anxious -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">16323678634823409250<!--Lumpinou_MP_Anxious_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="blacklist_traits">
+                  <T>140740<!--trait_Toddler_Angelic--></T>
+                  <T>140742<!--trait_Toddler_Charmer--></T>
+                  <T>140745<!--trait_Toddler_Inquisitive--></T>
+                  <T>140744<!--trait_Toddler_Clingy--></T>
+                  <T>140741<!--trait_Toddler_Wild--></T>
+                  <T>140739<!--trait_Toddler_Fussy--></T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <!-- Our worried moodlet — default path -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15732753<!--buff_HatesChildren_Toddler_SomethingsWrong--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <E n="subject">TargetSim</E>
+                <L n="blacklist_traits">
+                  <T>140740</T><T>140742</T><T>140745</T>
+                  <T>140744</T><T>140741</T><T>140739</T>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+
+    <!-- ── RELATIONSHIP DECAY −50 both directions ── -->
+    <V t="relationship">
+      <V n="relationship" t="change">
+        <U n="change">
+          <T n="amount">-50</T>
+          <E n="track">STR</E>
+          <L n="subject"><E>Actor</E></L>
+          <L n="target_participant_type"><E>TargetSim</E></L>
+        </U>
+      </V>
+    </V>
+    <V t="relationship">
+      <V n="relationship" t="change">
+        <U n="change">
+          <T n="amount">-50</T>
+          <E n="track">STR</E>
+          <L n="subject"><E>TargetSim</E></L>
+          <L n="target_participant_type"><E>Actor</E></L>
+        </U>
+      </V>
+    </V>
+
+  </L>
+</I>

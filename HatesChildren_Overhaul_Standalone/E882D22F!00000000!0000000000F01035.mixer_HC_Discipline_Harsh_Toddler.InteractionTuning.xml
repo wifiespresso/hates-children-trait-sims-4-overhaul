@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  DISCIPLINE INTERACTION: mixer_HC_Discipline_Harsh_Toddler
+  Instance: s = 15732789  (0x0000000000F01035)
+
+  Class:  HC_HarshDiscipline
+  Module: hc_discipline_animation          ← Python ts4script companion
+  Base:   ImmediateSuperInteraction
+
+  ═══════════════════════════════════════════════════════════════════════
+  WHAT THIS FILE DOES
+  ───────────────────
+  Defines all game-visible metadata for the Harsh Discipline interaction:
+    - Pie menu placement (Discipline category, right-click toddler)
+    - Display name + tooltip string keys
+    - Access tests (HC trait, actor age, target age)
+
+  WHAT THE PYTHON MODULE DOES (hc_discipline_animation.ts4script)
+  ───────────────────────────────────────────────────────────────
+    1. Queues BlackCinema clips on both sims via native ARB
+    2. Waits for clips to finish (flush_all_animations)
+    3. Rolls 40% Satisfied / 60% Annoyed outcome
+    4. Applies the corresponding loot (XML-defined moods, buffs, rel decay)
+
+  ANIMATION
+  ─────────
+  Adult  clip: BlackCinema:PosePack_201710141919474062_set_1
+               (6B20C4F3:00000000:B6D9D275A276CFAA — ActorName 'x')
+  Toddler clip: BlackCinema:PosePack_201710141919474062_set_2
+               (6B20C4F3:00000000:B6D9D275A276CFA9 — ActorName 'x')
+
+  PIE MENU PATH
+  ─────────────
+  Right-click Toddler → Discipline → Harsh Discipline
+
+  REQUIREMENTS
+  ────────────
+  - hc_discipline_animation.ts4script  (Python companion — MUST be installed)
+  - HatesChildren_Overhaul.package     (this XML + clip binaries)
+  - Lumpinou_MoodPackMod.package        (mood buffs)
+  - Less_Obsessive_Parents.package      (Tier 1 autonomy suppression)
+-->
+<I c="HC_HarshDiscipline"
+   i="interaction"
+   m="hc_discipline_animation"
+   n="mixer_HC_Discipline_Harsh_Toddler"
+   s="15732789">
+
+  <!-- ── Target type: another Sim (the toddler) ── -->
+  <E n="_target_type">SIM</E>
+
+  <!-- ── Display name + tooltip ── -->
+  <T n="display_name">0xF0002020<!--"Harsh Discipline"--></T>
+  <T n="short_name">0xF0002020</T>
+  <T n="pie_menu_tooltip">0xF0002021</T>
+
+  <!-- ── Pie menu: Discipline/Punishing category ── -->
+  <V n="pie_menu_category" t="enabled">
+    <T n="enabled">164690<!--pieMenuCategory_Discipline_Punishing--></T>
+  </V>
+
+  <!-- ── Tests ──────────────────────────────────────────────────────────────
+       All three must pass for the option to appear in the pie menu.
+       Test logic lives here in XML; execution logic lives in Python.
+  ── -->
+  <V n="test_globals" t="enabled">
+    <L n="enabled">
+
+      <!-- Actor must have trait_HatesChildren -->
+      <V t="trait">
+        <U n="trait">
+          <E n="subject">Actor</E>
+          <L n="whitelist_traits">
+            <T>16844<!--trait_HatesChildren--></T>
+          </L>
+        </U>
+      </V>
+
+      <!-- Actor must be Young Adult, Adult, or Elder -->
+      <V t="sim_info">
+        <U n="sim_info">
+          <E n="participant">Actor</E>
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>YOUNGADULT</E>
+              <E>ADULT</E>
+              <E>ELDER</E>
+            </L>
+          </V>
+        </U>
+      </V>
+
+      <!-- Target must be a Toddler — animation is toddler-specific -->
+      <V t="sim_info">
+        <U n="sim_info">
+          <E n="participant">TargetSim</E>
+          <V n="ages" t="specified">
+            <L n="specified">
+              <E>TODDLER</E>
+            </L>
+          </V>
+        </U>
+      </V>
+
+    </L>
+  </V>
+
+</I>

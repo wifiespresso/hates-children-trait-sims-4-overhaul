@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<I c="LootActions" i="action" m="interactions.utils.loot" n="loot_Cargivers_BabyBirthday" s="157555">
+  <L n="loot_actions">
+    <!-- Vanilla Action 1: GrowingUp buff — blocked for HC -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <V n="buff_reason" t="enabled">
+            <T n="enabled">0xAEF96AD0<!--From Birthday Party--></T>
+          </V>
+          <T n="buff_type">156743<!--buff_Toddlers_CTYAE_GrowingUp--></T>
+        </U>
+        <E n="subject">Actor</E>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="blacklist_traits">
+                  <T>16844<!--trait_HatesChildren--></T>
+                </L>
+              </U>
+            </V>
+            <V t="relationship">
+              <U n="relationship">
+                <U n="required_relationship_bits">
+                  <L n="match_any">
+                    <T>8805<!--family_Target_IsSonOrDaughterOf_Actor--></T>
+                  </L>
+                </U>
+                <L n="target_sim">
+                  <E>Object</E>
+                </L>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+    <!-- TIER 2: Apply Infant sad buff (Uncertain) to Object (the infant) if Actor has HatesChildren -->
+    <V t="buff">
+      <U n="buff">
+        <T n="buff_type">15732752<!--buff_HatesChildren_Infant_Uncertain--></T>
+        <L n="subject">
+          <E>Object</E>
+        </L>
+        <L n="tests">
+          <L>
+            <V t="trait">
+              <U n="trait">
+                <L n="whitelist_traits">
+                  <T>16844<!--trait_HatesChildren--></T>
+                </L>
+                <E n="subject">Actor</E>
+              </U>
+            </V>
+          </L>
+        </L>
+      </U>
+    </V>
+  </L>
+</I>

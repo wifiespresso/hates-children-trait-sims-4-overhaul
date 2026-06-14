@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  buff_HatesChildren_PostInteraction_Tense
+  Instance: 0x0000000000F01001 (= 15728641 decimal)
+
+  Applied to the HC CAREGIVER after any care interaction involving an infant/toddler/child.
+  Represents the unpleasant experience of being forced to tend to a child.
+
+  Mood: Tense, weight 2, 2 sim-hours (120 min).
+-->
+<I c="Buff" i="buff" m="buffs.buff" n="buff_HatesChildren_PostInteraction_Tense" s="15732737">
+  <T n="audio_sting_on_add" p="InGame\Audio\Stings\sting_buff_loss.propx">39b2aa4a:00000000:3bf33216a25546ea</T>
+  <T n="audio_sting_on_remove" p="InGame\Audio\Stings\sting_buff_loss.propx">39b2aa4a:00000000:3bf33216a25546ea</T>
+  <V n="_temporary_commodity_info" t="enabled">
+    <U n="enabled">
+      <L n="categories">
+        <E>Tense_Buffs</E>
+      </L>
+      <T n="max_duration">120</T>
+    </U>
+  </V>
+  <T n="buff_name">0xF0000001</T>
+  <T n="buff_description">0xF0000003</T>
+  <T n="icon" p="InGame\UI\Icons\Buffs\Buffs_Repulsed.png">2f7d0004:00000000:3ea5e1c0e5bd6d4a</T>
+  <T n="mood_type">14642<!--Mood_Tense--></T>
+  <T n="mood_weight">2</T>
+  <T n="visible">True</T>
+</I>

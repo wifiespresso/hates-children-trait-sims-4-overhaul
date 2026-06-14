@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  buff_HatesChildren_ForcedCaregiver_Distressed
+  Instance: 0x0000000000F01002 (= 15728642 decimal)
+
+  Applied to the HC CAREGIVER when they end up as active caregiver.
+  Represents deep discomfort at being responsible for a child.
+
+  Mood: Uncomfortable, weight 3, 4 sim-hours (240 min).
+  Injects a "Complain About..." venting social mixer while active.
+-->
+<I c="Buff" i="buff" m="buffs.buff" n="buff_HatesChildren_ForcedCaregiver_Distressed" s="15732738">
+  <T n="audio_sting_on_add" p="InGame\Audio\Stings\sting_buff_loss.propx">39b2aa4a:00000000:3bf33216a25546ea</T>
+  <T n="audio_sting_on_remove" p="InGame\Audio\Stings\sting_buff_gain.propx">39b2aa4a:00000000:8af8b916cf64c646</T>
+  <V n="_temporary_commodity_info" t="enabled">
+    <U n="enabled">
+      <L n="categories">
+        <E>Uncomfortable_Buffs</E>
+      </L>
+      <T n="max_duration">240</T>
+    </U>
+  </V>
+  <T n="buff_name">0xF0000002</T>
+  <T n="buff_description">0xF0000004</T>
+  <T n="icon" p="InGame\UI\Icons\Buffs\Buffs_Stressed.png">2f7d0004:00000000:0a04a7ca9e99d3f4</T>
+  <T n="mood_type">14643<!--Mood_Uncomfortable--></T>
+  <T n="mood_weight">3</T>
+  <T n="visible">True</T>
+  <L n="super_affordances">
+    <T>160832<!--mixer_social_ComplainAbout_targeted_Angry_alwaysOn--></T>
+  </L>
+</I>

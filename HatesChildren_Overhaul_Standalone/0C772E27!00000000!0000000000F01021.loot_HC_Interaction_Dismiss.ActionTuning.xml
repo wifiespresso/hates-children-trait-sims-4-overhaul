@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  INTERACTION LOOT: loot_HC_Interaction_Dismiss (s=15728673)
+  Called from: mixer_HC_dismiss_toddler
+  Actor = HC adult, TargetSim = Toddler
+
+  Actor gets: Lumpinou Annoyed (MP mood)
+  Target gets: Lumpinou Anxious (MP mood) + Lumpinou Lonely
+  Relationship: −30 both directions
+-->
+<I c="LootActions" i="action" m="interactions.utils.loot" n="loot_HC_Interaction_Dismiss" s="15732769">
+  <L n="loot_actions">
+
+    <!-- Actor (HC sim) gets Annoyed -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">11833727772534562138<!--Lumpinou_MP_Annoyed_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">Actor</E>
+      </U>
+    </V>
+
+    <!-- Target (toddler) gets Anxious -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">16323678634823409250<!--Lumpinou_MP_Anxious_Buff_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+      </U>
+    </V>
+
+    <!-- Target (toddler) gets Lonely -->
+    <V t="buff">
+      <U n="buff">
+        <U n="buff">
+          <T n="buff_type">15832408908802999538<!--Lumpinou_MP_Lonely_CoreSocial--></T>
+        </U>
+        <E n="subject">TargetSim</E>
+      </U>
+    </V>
+
+    <!-- Relationship decay -->
+    <V t="relationship">
+      <V n="relationship" t="change">
+        <U n="change">
+          <T n="amount">-30</T>
+          <E n="track">STR</E>
+          <L n="subject"><E>Actor</E></L>
+          <L n="target_participant_type"><E>TargetSim</E></L>
+        </U>
+      </V>
+    </V>
+    <V t="relationship">
+      <V n="relationship" t="change">
+        <U n="change">
+          <T n="amount">-30</T>
+          <E n="track">STR</E>
+          <L n="subject"><E>TargetSim</E></L>
+          <L n="target_participant_type"><E>Actor</E></L>
+        </U>
+      </V>
+    </V>
+
+  </L>
+</I>
